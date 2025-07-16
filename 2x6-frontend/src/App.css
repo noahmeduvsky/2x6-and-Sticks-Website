@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: 
+    linear-gradient(rgba(253, 248, 240, 0.85), rgba(253, 248, 240, 0.85)),
+    url('/background.jpeg') center/cover no-repeat;
+  color: #3d2b1f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
+  padding: 40px 20px;
+  background-color: rgba(253, 248, 240, 0.85); /* extra safety for contrast */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.logo-container img {
+  width: 300px;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.hero {
+  max-width: 750px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cta-buttons a {
+  padding: 14px 28px;
+  background-color: #4b2e17;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.cta-buttons a:hover {
+  background-color: #3a230f;
+}
