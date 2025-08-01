@@ -3,7 +3,7 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: 
     linear-gradient(rgba(253, 248, 240, 0.85), rgba(253, 248, 240, 0.85)),
-    url('/background.jpeg') center/cover no-repeat;
+    #fdf8f0;
   color: #3d2b1f;
   display: flex;
   justify-content: center;
