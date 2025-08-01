@@ -1,0 +1,30 @@
+[build]
+  base = "2x6-frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Form handling configuration
+[forms]
+  [forms.contact]
+    name = "Contact Form"
+    fields = [
+      { name = "name", type = "text" },
+      { name = "email", type = "email" },
+      { name = "phone", type = "tel" },
+      { name = "message", type = "textarea" },
+      { name = "services", type = "text" },
+      { name = "roughFraming", type = "checkbox" },
+      { name = "roofing", type = "checkbox" },
+      { name = "siding", type = "checkbox" },
+      { name = "deckConstruction", type = "checkbox" },
+      { name = "basementFinishing", type = "checkbox" },
+      { name = "other", type = "checkbox" }
+    ] 
