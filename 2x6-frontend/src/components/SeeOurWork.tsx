@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./SeeOurWork.css";
 import photo1 from "../assets/work/photo1.jpeg";
 import photo2 from "../assets/work/photo2.jpeg";
@@ -7,7 +7,6 @@ import photo3 from "../assets/work/photo3.jpeg";
 import photo4 from "../assets/work/photo4.jpeg";
 import photo5 from "../assets/work/photo5.jpeg";
 import photo6 from "../assets/work/photo6.jpeg";
-import homeIcon from "../assets/home-button.jpg";
 
 const projects = [
   { image: photo1 },
@@ -21,7 +20,6 @@ const projects = [
 const services = [
   "Rough Framing",
   "Roofing",
-  "Gable Pediments",
   "Custom Deck Builds",
   "Deck Repair",
   "Basement Finishing",
@@ -52,22 +50,37 @@ const testimonials = [
 
 const SeeOurWork: React.FC = () => {
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  const handleServiceClick = (service: string) => {
+    // Navigate to contact form with the selected service pre-filled
+    navigate('/contact', { 
+      state: { selectedService: service }
+    });
+  };
 
   return (
     <div className="work-page">
-      {/* Home button */}
-      <Link to="/" className="home-button">
-        <img src={homeIcon} alt="Home" />
-      </Link>
-
       <h1>Let Us Give You a Quote on Your Next Project!</h1>
       
       {/* Services Section */}
       <section className="services-section">
         <h2>Our Services</h2>
+        <p className="services-intro">Click on any service to get a free quote!</p>
         <div className="services-grid">
           {services.map((service, index) => (
-            <div key={index} className="service-item">
+            <div 
+              key={index} 
+              className="service-item"
+              onClick={() => handleServiceClick(service)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  handleServiceClick(service);
+                }
+              }}
+            >
               {service}
             </div>
           ))}

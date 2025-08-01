@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./Contact.css";
-import homeIcon from "../assets/home-button.jpg";
-import { Link } from "react-router-dom";
 
 function Contact() {
+  const location = useLocation();
+  const selectedService = location.state?.selectedService;
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -12,7 +14,6 @@ function Contact() {
     services: {
       roughFraming: false,
       roofing: false,
-      gablePediments: false,
       customDeckBuilds: false,
       deckRepair: false,
       basementFinishing: false,
@@ -27,6 +28,36 @@ function Contact() {
 
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Pre-select service if one was chosen from the services page
+  useEffect(() => {
+    if (selectedService) {
+      const serviceKey = selectedService.toLowerCase().replace(/\s+/g, '').replace(/&/g, '');
+      const serviceMap: { [key: string]: string } = {
+        'roughframing': 'roughFraming',
+        'roofing': 'roofing',
+        'customdeckbuilds': 'customDeckBuilds',
+        'deckrepair': 'deckRepair',
+        'basementfinishing': 'basementFinishing',
+        'siding': 'siding',
+        'pergolaspavilions': 'pergolasPavilions',
+        'stormdamagerepair': 'stormDamageRepair',
+        'guttercleaningrepair': 'gutterCleaningRepair',
+        'barnsandsheds': 'barnsSheds'
+      };
+
+      const serviceKeyToCheck = serviceMap[serviceKey];
+      if (serviceKeyToCheck && formData.services.hasOwnProperty(serviceKeyToCheck)) {
+        setFormData(prev => ({
+          ...prev,
+          services: {
+            ...prev.services,
+            [serviceKeyToCheck]: true
+          }
+        }));
+      }
+    }
+  }, [selectedService]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
@@ -82,7 +113,6 @@ function Contact() {
         services: {
           roughFraming: false,
           roofing: false,
-          gablePediments: false,
           customDeckBuilds: false,
           deckRepair: false,
           basementFinishing: false,
@@ -104,12 +134,14 @@ function Contact() {
 
   return (
     <div className="contact-container">
-      {/* Home button */}
-      <Link to="/" className="home-button">
-        <img src={homeIcon} alt="Home" />
-      </Link>
-
       <h2>Contact Us</h2>
+      
+      {selectedService && (
+        <div className="selected-service-notice">
+          <p>You're requesting a quote for: <strong>{selectedService}</strong></p>
+        </div>
+      )}
+
       <form 
         name="contact" 
         method="POST" 
@@ -179,16 +211,6 @@ function Contact() {
               disabled={isSubmitting}
             />
             Roofing
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="gablePediments"
-              checked={formData.services.gablePediments}
-              onChange={handleChange}
-              disabled={isSubmitting}
-            />
-            Gable Pediments
           </label>
           <label>
             <input

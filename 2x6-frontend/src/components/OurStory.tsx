@@ -1,16 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import homeIcon from '../assets/home-button.jpg';
 import '../App.css'; // using landing-page, hero, etc.
 
 const OurStory: React.FC = () => {
   return (
     <div className="landing-page">
-      {/* Home button */}
-      <Link to="/" className="home-button">
-        <img src={homeIcon} alt="Home" />
-      </Link>
-
       <section className="hero">
         <h1>Our Story</h1>
         <p className="company-philosophy">
