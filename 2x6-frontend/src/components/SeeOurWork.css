@@ -9,11 +9,93 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  color: #2c1810;
+}
+
+.work-page h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #2c1810;
 }
 
 .work-page p {
   font-size: 1.1rem;
   color: #444;
+  margin-bottom: 2rem;
+}
+
+/* Services Section */
+.services-section {
+  margin-bottom: 3rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.service-item {
+  background: #4b2e17;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.service-item:hover {
+  transform: translateY(-2px);
+  background: #3a230f;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  margin-bottom: 3rem;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.testimonial {
+  padding: 1.5rem;
+  border-radius: 12px;
+  color: white;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.testimonial:hover {
+  transform: translateY(-3px);
+}
+
+.testimonial-text {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.testimonial-name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Gallery Section */
+.gallery-section {
   margin-bottom: 2rem;
 }
 

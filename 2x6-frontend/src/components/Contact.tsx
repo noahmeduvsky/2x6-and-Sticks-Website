@@ -10,16 +10,23 @@ function Contact() {
     phone: "",
     message: "",
     services: {
-      roughCarpentry: false,
+      roughFraming: false,
       roofing: false,
-      siding: false,
-      deckConstruction: false,
+      gablePediments: false,
+      customDeckBuilds: false,
+      deckRepair: false,
       basementFinishing: false,
+      siding: false,
+      pergolasPavilions: false,
+      stormDamageRepair: false,
+      gutterCleaningRepair: false,
+      barnsSheds: false,
       other: false
     }
   });
 
   const [status, setStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
@@ -41,49 +48,80 @@ function Contact() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("Sending...");
+    setIsSubmitting(true);
 
-    try {
-      const response = await fetch("http://localhost:5000/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
+    // Get selected services as a string
+    const selectedServices = Object.entries(formData.services)
+      .filter(([_, checked]) => checked)
+      .map(([key]) => key.replace(/([A-Z])/g, ' $1'))
+      .map(s => s.charAt(0).toUpperCase() + s.slice(1))
+      .join(', ');
+
+    // Create form data for Netlify
+    const form = e.target as HTMLFormElement;
+    const formDataObj = new FormData(form);
+    formDataObj.append('services', selectedServices || 'None selected');
+
+    // Submit the form
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formDataObj as any).toString()
+    })
+    .then(() => {
+      setStatus("Message sent successfully!");
+      setIsSubmitting(false);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        services: {
+          roughFraming: false,
+          roofing: false,
+          gablePediments: false,
+          customDeckBuilds: false,
+          deckRepair: false,
+          basementFinishing: false,
+          siding: false,
+          pergolasPavilions: false,
+          stormDamageRepair: false,
+          gutterCleaningRepair: false,
+          barnsSheds: false,
+          other: false
+        }
       });
-
-      if (response.ok) {
-        setStatus("Message sent successfully!");
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
-          services: {
-            roughCarpentry: false,
-            roofing: false,
-            siding: false,
-            deckConstruction: false,
-            basementFinishing: false,
-            other: false
-          }
-        });
-      } else {
-        setStatus("Failed to send message.");
-      }
-    } catch (error) {
+      form.reset();
+    })
+    .catch(() => {
       setStatus("Error sending message.");
-    }
+      setIsSubmitting(false);
+    });
   };
 
   return (
     <div className="contact-container">
-      <Link to="/" className="home-icon-link">
-        <img src={homeIcon} alt="Home" className="home-icon" />
+      {/* Home button */}
+      <Link to="/" className="home-button">
+        <img src={homeIcon} alt="Home" />
       </Link>
 
       <h2>Contact Us</h2>
-      <form onSubmit={handleSubmit} className="contact-form">
+      <form 
+        name="contact" 
+        method="POST" 
+        data-netlify="true" 
+        data-netlify-honeypot="bot-field"
+        onSubmit={handleSubmit} 
+        className="contact-form"
+      >
+        {/* Netlify form detection */}
+        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="bot-field" />
+        
         <input
           type="text"
           name="name"
@@ -91,6 +129,7 @@ function Contact() {
           onChange={handleChange}
           placeholder="Name"
           required
+          disabled={isSubmitting}
         />
         <input
           type="email"
@@ -99,6 +138,7 @@ function Contact() {
           onChange={handleChange}
           placeholder="Email"
           required
+          disabled={isSubmitting}
         />
         <input
           type="tel"
@@ -107,6 +147,7 @@ function Contact() {
           onChange={handleChange}
           placeholder="Phone Number"
           required
+          disabled={isSubmitting}
         />
         <textarea
           name="message"
@@ -114,65 +155,136 @@ function Contact() {
           onChange={handleChange}
           placeholder="Brief Description"
           required
+          disabled={isSubmitting}
         />
 
         <label className="service-label">What services are you interested in?</label>
-        <label>
-          <input
-            type="checkbox"
-            name="roughCarpentry"
-            checked={formData.services.roughCarpentry}
-            onChange={handleChange}
-          />
-          Rough Carpentry
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="roofing"
-            checked={formData.services.roofing}
-            onChange={handleChange}
-          />
-          Roofing
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="siding"
-            checked={formData.services.siding}
-            onChange={handleChange}
-          />
-          Siding
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="deckConstruction"
-            checked={formData.services.deckConstruction}
-            onChange={handleChange}
-          />
-          Deck Construction
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="basementFinishing"
-            checked={formData.services.basementFinishing}
-            onChange={handleChange}
-          />
-          Finishing a Basement
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="other"
-            checked={formData.services.other}
-            onChange={handleChange}
-          />
-          Other
-        </label>
+        <div className="services-checkboxes">
+          <label>
+            <input
+              type="checkbox"
+              name="roughFraming"
+              checked={formData.services.roughFraming}
+              onChange={handleChange}
+              disabled={isSubmitting}
+            />
+            Rough Framing
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="roofing"
+              checked={formData.services.roofing}
+              onChange={handleChange}
+              disabled={isSubmitting}
+            />
+            Roofing
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="gablePediments"
+              checked={formData.services.gablePediments}
+              onChange={handleChange}
+              disabled={isSubmitting}
+            />
+            Gable Pediments
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="customDeckBuilds"
+              checked={formData.services.customDeckBuilds}
+              onChange={handleChange}
+              disabled={isSubmitting}
+            />
+            Custom Deck Builds
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="deckRepair"
+              checked={formData.services.deckRepair}
+              onChange={handleChange}
+              disabled={isSubmitting}
+            />
+            Deck Repair
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="basementFinishing"
+              checked={formData.services.basementFinishing}
+              onChange={handleChange}
+              disabled={isSubmitting}
+            />
+            Basement Finishing
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="siding"
+              checked={formData.services.siding}
+              onChange={handleChange}
+              disabled={isSubmitting}
+            />
+            Siding
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="pergolasPavilions"
+              checked={formData.services.pergolasPavilions}
+              onChange={handleChange}
+              disabled={isSubmitting}
+            />
+            Pergolas & Pavilions
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="stormDamageRepair"
+              checked={formData.services.stormDamageRepair}
+              onChange={handleChange}
+              disabled={isSubmitting}
+            />
+            Storm Damage Repair
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="gutterCleaningRepair"
+              checked={formData.services.gutterCleaningRepair}
+              onChange={handleChange}
+              disabled={isSubmitting}
+            />
+            Gutter Cleaning and Repair
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="barnsSheds"
+              checked={formData.services.barnsSheds}
+              onChange={handleChange}
+              disabled={isSubmitting}
+            />
+            Barns and Sheds
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="other"
+              checked={formData.services.other}
+              onChange={handleChange}
+              disabled={isSubmitting}
+            />
+            Other
+          </label>
+        </div>
 
-        <button type="submit">Send Message</button>
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Sending..." : "Send Message"}
+        </button>
         {status && <p className="status">{status}</p>}
       </form>
     </div>
@@ -180,3 +292,4 @@ function Contact() {
 }
 
 export default Contact;
+

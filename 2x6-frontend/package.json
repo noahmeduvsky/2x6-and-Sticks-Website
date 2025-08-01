@@ -1,7 +1,10 @@
 {
-  "name": "2x6-frontend",
+  "name": "modern-framecraft-website",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Modern FrameCraft - Professional carpentry services in Michigan. Your Project. Built to Last.",
+  "author": "Modern FrameCraft",
+  "keywords": ["carpentry", "construction", "framing", "roofing", "deck-building", "basement-finishing", "Michigan"],
   "type": "module",
   "scripts": {
     "dev": "vite",
