@@ -115,3 +115,94 @@
 .services-checkboxes input[type="checkbox"]:disabled {
   cursor: not-allowed;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .contact-container {
+    margin: 60px auto;
+    padding: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  
+  .contact-container h2 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+  
+  .selected-service-notice {
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+  
+  .service-label {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  
+  .services-checkboxes {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .services-checkboxes label {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .contact-form button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-container {
+    margin: 50px auto;
+    padding: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .contact-container h2 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+  }
+  
+  .selected-service-notice {
+    padding: 10px;
+    margin-bottom: 12px;
+  }
+  
+  .selected-service-notice p {
+    font-size: 0.9rem;
+  }
+  
+  .service-label {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+  
+  .services-checkboxes label {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+  
+  .contact-form button {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+}
