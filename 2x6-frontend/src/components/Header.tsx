@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import logo from '/Logo.png';
 import './Header.css';
 
 const Header: React.FC = () => {
@@ -10,7 +9,7 @@ const Header: React.FC = () => {
     <header className="header">
       <div className="header-content">
         <Link to="/" className="logo-link">
-          <img src={logo} alt="Modern FrameCraft" className="header-logo" />
+          <img src="/Logo.png" alt="Modern FrameCraft" className="header-logo" />
         </Link>
         
         <nav className="nav-menu">
@@ -38,4 +37,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header; 
+export default Header;

@@ -1,5 +1,4 @@
 import './App.css';
-import logo from '/Logo.png';
 import Contact from './components/Contact';
 import SeeOurWork from './components/SeeOurWork';
 import OurStory from './components/OurStory';
@@ -19,7 +18,7 @@ function App() {
                 <div style={{ marginTop: '70px' }}>
                   <div className="landing-page">
                     <div className="logo-container">
-                      <img src={logo} alt="Modern FrameCraft Logo" />
+                      <img src="/Logo.png" alt="Modern FrameCraft Logo" />
                     </div>
                     <section className="hero">
                       <h2 className="tagline">Your Project. Built to Last.</h2>
@@ -45,30 +44,39 @@ function App() {
               </div>
             }
           />
-          <Route path="/contact" element={
-            <div>
-              <Header />
-              <div style={{ marginTop: '70px' }}>
-                <Contact />
+          <Route
+            path="/contact"
+            element={
+              <div>
+                <Header />
+                <div style={{ marginTop: '70px' }}>
+                  <Contact />
+                </div>
               </div>
-            </div>
-          } />
-          <Route path="/work" element={
-            <div>
-              <Header />
-              <div style={{ marginTop: '70px' }}>
-                <SeeOurWork />
+            }
+          />
+          <Route
+            path="/work"
+            element={
+              <div>
+                <Header />
+                <div style={{ marginTop: '70px' }}>
+                  <SeeOurWork />
+                </div>
               </div>
-            </div>
-          } />
-          <Route path="/our-story" element={
-            <div>
-              <Header />
-              <div style={{ marginTop: '70px' }}>
-                <OurStory />
+            }
+          />
+          <Route
+            path="/our-story"
+            element={
+              <div>
+                <Header />
+                <div style={{ marginTop: '70px' }}>
+                  <OurStory />
+                </div>
               </div>
-            </div>
-          } />
+            }
+          />
         </Routes>
       </div>
     </Router>
@@ -76,4 +84,3 @@ function App() {
 }
 
 export default App;
-
