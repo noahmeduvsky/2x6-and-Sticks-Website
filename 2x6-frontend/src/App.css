@@ -194,6 +194,52 @@ body {
   }
 }
 
+/* OurStory specific mobile improvements */
+@media (max-width: 768px) {
+  .hero p {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  
+  .company-philosophy {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+    text-align: left;
+  }
+  
+  .contact-info {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-top: 2rem;
+    padding: 15px;
+    background-color: rgba(75, 46, 23, 0.05);
+    border-radius: 8px;
+    border-left: 4px solid #4b2e17;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero p {
+    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .company-philosophy {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-info {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-top: 1.5rem;
+    padding: 12px;
+  }
+}
+
 /* Landscape orientation for mobile */
 @media (max-width: 768px) and (orientation: landscape) {
   body {
