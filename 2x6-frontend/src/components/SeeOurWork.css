@@ -3,11 +3,12 @@
   text-align: center;
   background: #ffffff;
   min-height: 100vh;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .work-container {
@@ -16,7 +17,6 @@
   gap: 4rem;
   margin-bottom: 4rem;
   align-items: start;
-  max-width: 1200px;
   width: 100%;
 }
 

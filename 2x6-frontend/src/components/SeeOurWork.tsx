@@ -64,17 +64,17 @@ const testimonials = [
   {
     name: "Athan G.",
     text: "Xavier and Noah did an excellent job with the rough framing on my basement—professional, efficient, and solid work.",
-    color: "#FFD700"
+    color: "#007bff"
   },
   {
     name: "Jordan S.",
     text: "Modern FrameCraft did a great job installing my Trex decking—the work quality was solid. Highly recommend for home improvements.",
-    color: "#FF6B6B"
+    color: "#0056b3"
   },
   {
     name: "Alisha R.",
     text: "Modern FrameCraft was professional, quick, and did a fantastic job on my roof. They made the process smooth and delivered good results.",
-    color: "#FFD700"
+    color: "#007bff"
   }
 ];
 
