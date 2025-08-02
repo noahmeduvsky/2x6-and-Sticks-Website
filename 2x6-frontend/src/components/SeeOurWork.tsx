@@ -114,12 +114,6 @@ const SeeOurWork: React.FC = () => {
             </button>
             <button 
               className="cta-button"
-              onClick={() => navigate('/contact', { state: { selectedService: 'Service Inquiry' } })}
-            >
-              Inquire About Our Services
-            </button>
-            <button 
-              className="cta-button"
               onClick={() => navigate('/our-story')}
             >
               Learn More About Us

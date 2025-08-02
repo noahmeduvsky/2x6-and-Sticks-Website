@@ -5,6 +5,9 @@
   min-height: 100vh;
   max-width: 1400px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .work-container {
@@ -14,8 +17,7 @@
   margin-bottom: 4rem;
   align-items: start;
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
 /* Left Section - Company Overview */
@@ -144,8 +146,7 @@
   padding-top: 3rem;
   border-top: 1px solid #e9ecef;
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
 .testimonials-section h2 {
@@ -196,8 +197,7 @@
   padding-top: 3rem;
   border-top: 1px solid #e9ecef;
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
 .gallery-section h2 {
