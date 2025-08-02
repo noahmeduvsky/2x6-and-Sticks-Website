@@ -199,18 +199,20 @@ body {
   .hero p {
     margin-bottom: 1.5rem;
     text-align: left;
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
   
   .company-philosophy {
-    font-size: 1.1rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.5;
     margin-bottom: 1.8rem;
     text-align: left;
   }
   
   .contact-info {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 0.9rem;
+    line-height: 1.4;
     margin-top: 2rem;
     padding: 15px;
     background-color: rgba(75, 46, 23, 0.05);
@@ -222,19 +224,19 @@ body {
 @media (max-width: 480px) {
   .hero p {
     margin-bottom: 1.2rem;
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 0.85rem;
+    line-height: 1.4;
   }
   
   .company-philosophy {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 0.9rem;
+    line-height: 1.4;
     margin-bottom: 1.5rem;
   }
   
   .contact-info {
-    font-size: 0.9rem;
-    line-height: 1.4;
+    font-size: 0.8rem;
+    line-height: 1.3;
     margin-top: 1.5rem;
     padding: 12px;
   }
