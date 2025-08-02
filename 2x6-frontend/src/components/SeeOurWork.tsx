@@ -24,11 +24,11 @@ const services = [
   },
   {
     name: "Roofing",
-    description: "Complete roofing solutions including shingle replacement, metal roofing, and emergency repairs. We work with all major roofing materials and provide warranty coverage."
+    description: "Complete roofing solutions including shingle replacement, metal roofing, and emergency repairs. We work with all major roofing materials."
   },
   {
     name: "Custom Deck Builds",
-    description: "Custom deck design and construction using premium materials like Trex, composite, and pressure-treated lumber. We handle permits, design, and complete installation."
+    description: "Custom deck design and construction using premium materials like Trex, composite, and pressure-treated lumber. We work with the homeowner to attain permits, design, and complete installation."
   },
   {
     name: "Deck Repair",
@@ -40,7 +40,7 @@ const services = [
   },
   {
     name: "Siding",
-    description: "Professional siding installation and repair for vinyl, fiber cement, and wood siding. We ensure proper weatherproofing and aesthetic appeal."
+    description: "Professional siding installation and repair for vinyl and wood siding. We ensure proper weatherproofing and aesthetic appeal."
   },
   {
     name: "Pergolas & Pavilions",
@@ -98,18 +98,19 @@ const SeeOurWork: React.FC = () => {
       <div className="work-container">
         {/* Left Section - Company Overview */}
         <div className="work-left-section">
-          <h1>PROPERTY MANAGEMENT</h1>
+          <h1>ROUGH CARPENTRY</h1>
           <p>
-            Maintaining your commercial office or building, our property management team ensures 
-            a space you never have to worry about. From rough framing to custom deck builds, 
-            we deliver professional carpentry services with quality craftsmanship and honest communication.
+            Professional rough carpentry services for residential and commercial projects. 
+            From structural framing to custom deck builds, we deliver quality craftsmanship 
+            with honest communication and reliable service. Our experienced team handles 
+            everything from permits to final installation with precision and care.
           </p>
           <div className="cta-buttons">
             <button 
               className="cta-button"
               onClick={() => navigate('/contact', { state: { selectedService: 'General Quote' } })}
             >
-              Submit Maintenance Request
+              Get a Free Quote
             </button>
             <button 
               className="cta-button"
@@ -121,7 +122,7 @@ const SeeOurWork: React.FC = () => {
               className="cta-button"
               onClick={() => navigate('/our-story')}
             >
-              Learn More
+              Learn More About Us
             </button>
           </div>
         </div>
